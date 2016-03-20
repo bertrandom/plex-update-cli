@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var config = require('config');
+var config = require('cli-config').getConfig({dirname: __dirname});
 var inquirer = require('inquirer');
 var PlexAPI = require("plex-api");
 var moment = require('moment');
@@ -59,5 +59,5 @@ client.query('/library/sections').then(function (result) {
 	});
 
 }, function (err) {
-    throw new Error("Could not connect to server");
+	console.err('Could not connect to server.');
 });
